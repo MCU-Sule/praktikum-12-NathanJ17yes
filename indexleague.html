@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Nathan Joshua 2172026">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<style>
+    #black {
+        width: 100%;
+        height: 390px;
+        background-color: black;
+        margin-top: 0px;
+        padding-top: 10px;
+        margin-top: 15px;
+    }
+    .gambar {
+        width: 50px;
+        height: 50px;
+        border: 2px solid orange;
+        margin-left: 30px;
+        border-radius: 20%;
+        display: flex;
+    }
+    .nama {
+        width: 1190px;
+        height: 20px;
+        background-color: rgba(210, 159, 30, 0.679);
+        display: flex;
+        margin-top: 20px;
+        color: rgb(255, 197, 60);
+        font-size: 26px;
+        font-weight: bold;
+        padding-left: 10px;
+        padding-bottom: 10px;
+
+    }
+    .container {
+        height: 50px;
+        width: 100%;
+        display: flex
+    }
+    .descript{
+        border: 1px solid rgb(218, 164, 37);
+        width : 1210px;
+        height: 50px;
+        margin-left: 90px;
+        margin-top: 0;
+        border-top: 0;
+        color: white;
+        font-size: 13px;
+    }
+    #c2{
+        margin-top: 30px;
+    }
+    #c3 {
+        margin-top: 30px;
+    }
+    img {
+        width: 50px;
+        height: 50px;
+    }
+    button {
+        width:1200px;
+        margin-left: 60px;
+    }
+</style>
+<body>
+    <button onclick="satu(), dua(), tiga()">Find me 3 random Champion</button>
+    <div id = "black">
+        <div class = "container" id= "c1">
+            <div class = "gambar" id="g1"></div>
+            <div class = "nama" id="n1"></div><br>
+        </div>
+           <div class = "descript" id = "d1"></div>
+
+         <div class= "container" id= "c2">
+            <div class = "gambar" id= "g2"></div>
+            <div class = "nama" id= "n2"></div>
+        </div>
+           <div class = "descript"id = "d2"></div>
+
+        <div class = "container" id= "c3">
+            <div class = "gambar" id= "g3"></div>
+            <div class = "nama" id= "n3"></div><br> 
+        </div>
+           <div class = "descript" id = "d3"></div>
+    </div>
+</body>
+<script>
+    let gambar1 = document.createElement("img")
+    let gambar2 = document.createElement("img")
+    let gambar3 = document.createElement("img")
+    function satu(){
+    $.getJSON("league.json", function(result){
+        let i = parseInt(Math.round(Math.random()*152))
+        let dg = document.getElementById("g1")
+        gambar1.src = (result[i].icon)
+        document.getElementById("n1").innerHTML = (result[i].name)
+        dg.appendChild(gambar1)
+        document.getElementById("d1").innerHTML = (result[i].description)
+    }) 
+    }
+    function dua(){
+    $.getJSON("league.json", function(result){
+        let a = parseInt(Math.round(Math.random()*152))
+        let dg2 = document.getElementById("g2")
+        console.log(result)
+        gambar2.src = (result[a].icon)
+        document.getElementById("n2").innerHTML = (result[a].name)
+        dg2.appendChild(gambar2)
+        document.getElementById("d2").innerHTML = (result[a].description)
+    }) 
+    }
+    function tiga(){
+    $.getJSON("league.json", function(result){
+        let b = parseInt(Math.round(Math.random()*152))
+        let dg3 = document.getElementById("g3")
+        console.log(result)
+        gambar3.src = (result[b].icon)
+        document.getElementById("n3").innerHTML = (result[b].name)
+        dg3.appendChild(gambar3)
+        document.getElementById("d3").innerHTML = (result[b].description)
+    }) 
+    }
+</script>
+</html>
